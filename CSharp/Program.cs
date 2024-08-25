@@ -1,4 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -12,7 +11,6 @@ static extern void Wait();
 
 PrintThreadCount();
 var count = Environment.ProcessorCount * 4;
-// var tasks = new List<Task>(count);
 Init(count); // Initialize the Barrier at the Rust side
 
 var sw = Stopwatch.StartNew();
