@@ -10,7 +10,7 @@ brew install dotnet-sdk
 You can run the demo with
 ```sh
 # will take a bit to build Rust and C# code for the first time
-cd CSharp && dotnet run -c Releasr
+cd CSharp && dotnet run -c Release
 ```
 
 Your output should be something like:
