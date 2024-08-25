@@ -7,4 +7,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="cargo build --release --manifest-path ../Rust/Cargo.toml" />
+  </Target>
+
+  <ItemGroup>
+    <None
+      Include="$(MSBuildThisFileDirectory)..\Rust\target\release\Rust.dll"
+      CopyToOutputDirectory="PreserveNewest"
+      Condition="$([MSBuild]::IsOsPlatform('Windows'))" />
+    <None
+      Include="$(MSBuildThisFileDirectory)..\Rust\target\release\libRust.so"
+      CopyToOutputDirectory="PreserveNewest"
+      Condition="$([MSBuild]::IsOsPlatform('Linux'))" />
+    <None
+      Include="$(MSBuildThisFileDirectory)..\Rust\target\release\libRust.dylib"
+      CopyToOutputDirectory="PreserveNewest"
+      Condition="$([MSBuild]::IsOsPlatform('OSX'))" />
+  </ItemGroup>
+
 </Project>

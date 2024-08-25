@@ -1,12 +1,10 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-const string Lib = "../Rust/target/release/Rust";
-
-[DllImport(Lib, EntryPoint = "init")]
+[DllImport("Rust", EntryPoint = "init")]
 static extern void Init(nint threads);
 
-[DllImport(Lib, EntryPoint = "wait")]
+[DllImport("Rust", EntryPoint = "wait")]
 static extern void Wait();
 
 PrintThreadCount();

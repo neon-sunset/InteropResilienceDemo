@@ -7,10 +7,10 @@ sudo dnf install dotnet-sdk-8.0
 brew install dotnet-sdk
 ```
 
-To build and run the demo, run the following commands:
+You can run the demo with
 ```sh
-cd Rust && cargo build --release && cd ..
-cd CSharp && dotnet run -c Release
+# will take a bit to build Rust and C# code for the first time
+cd CSharp && dotnet run -c Releasr
 ```
 
 Your output should be something like:
