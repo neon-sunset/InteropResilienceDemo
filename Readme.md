@@ -52,8 +52,8 @@ steady state, the threadpool will settle on optimal amount of threads that are n
 However, most common "degenerate" cases like above tend to happen within constraints of managed code instead. Situations like soft deadlocks, sync over async or vice versa, simple usage of synchronous lock primitives, etc. In that case, threadpool has a separate mechanism that lets
 such blocking operations to interactively notify it about the blocking and allow it to immediately inject more threads without any delay.
 
-The code in this repo is actually an adapted version of improvement demonstration of such mechanism that was introduced in .NET 6.0.
-You can find the original code in this section: https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-6/#threading
-Even without it, I think this article will be interesting to HN readers so give it a skim!
+In those situations there is no wind-up period and the code above is executed under 500ms on my machine with .NET 9 RC.1 build (which also includes going through JIT compilation, it would be lower with NativeAOT).
+The code to reproduce such obsevation can be found here: https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-6/#threading
+This repo adapted it to demonstrate un-cooperative blocking across FFI instead. Even without it, I think this article will be interesting to HN readers so give it a skim!
 
 [^1]: https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian#debian-12
