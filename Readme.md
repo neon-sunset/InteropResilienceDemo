@@ -45,7 +45,7 @@ Current thread count in the pool: 64
 Explanation:
 In .NET, you don't pay for threadpool taking memory and threads unless you use it. When you do, it starts with Environment.ProcessorCount threads (but because the observation has a race here, you see 1). Which is why the first tasks get handled immediately and before getting un-cooperatively blocked across interop boundary.
 
-After that, subsequent thread injection is subject to hill-climbing algorithm that will slowly but surely counteract threadpool starvation.
+After that, subsequent thread injection and removal is subject to hill-climbing algorithm that will slowly but surely counteract threadpool starvation.
 In realistic workloads, such bursty starvations are usually either not observed or observed during startup-like scenarios. After reaching the
 steady state, the threadpool will settle on optimal amount of threads that are necessary to process the work items without delay.
 
